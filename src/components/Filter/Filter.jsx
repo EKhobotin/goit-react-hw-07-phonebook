@@ -5,6 +5,7 @@ import { searchContact } from 'store/contactsSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+
   const handleSearch = e => {
     dispatch(searchContact(e.target.value));
   };
