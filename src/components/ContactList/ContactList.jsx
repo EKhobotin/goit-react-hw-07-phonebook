@@ -4,20 +4,16 @@ import { Audio } from 'react-loader-spinner';
 import { List, ListItem, Span } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContactThunk, fetchContactsThunk } from 'store/contactsThunk';
+import { selectContacts, selectFilter } from 'store/selectors';
 
 export const ContactsList = () => {
-  // const { contacts, filter } = useSelector(state => state.contacts);
-  console.log(Audio);
   const dispatch = useDispatch();
   function handleDelete(id) {
     dispatch(deleteContactThunk(id));
   }
 
-  const { items, error, isLoading } = useSelector(
-    state => state.contacts.contacts
-  );
-  // console.log(items);
-  const { filter } = useSelector(state => state.contacts);
+  const { items, error, isLoading } = useSelector(selectContacts);
+  const { filter } = useSelector(selectFilter);
 
   useEffect(() => {
     dispatch(fetchContactsThunk());

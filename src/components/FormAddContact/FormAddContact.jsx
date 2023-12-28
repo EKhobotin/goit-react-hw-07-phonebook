@@ -4,12 +4,13 @@ import { Form, Container, Label, Button, Input } from './FormAddContact.styled';
 // import { nanoid } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 import { addContactThunk } from 'store/contactsThunk';
+import { selectContacts } from 'store/selectors';
 
 export const FormAddContact = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contacts.contacts.items);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleChangeContact = e => {
