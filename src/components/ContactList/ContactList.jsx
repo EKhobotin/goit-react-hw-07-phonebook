@@ -13,16 +13,20 @@ export const ContactsList = () => {
   }
 
   const { items, error, isLoading } = useSelector(selectContacts);
-  const { filter } = useSelector(selectFilter);
+  const filter = useSelector(selectFilter);
 
   useEffect(() => {
     dispatch(fetchContactsThunk());
   }, [dispatch]);
 
   function filteredContacts() {
-    return items.filter(el =>
-      el.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    if (filter) {
+      return items.filter(el =>
+        el.name.toLowerCase().includes(filter.toLowerCase())
+      );
+    } else {
+      return items;
+    }
   }
   return (
     <List>

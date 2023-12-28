@@ -10,8 +10,9 @@ export const FormAddContact = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(selectContacts);
+  const { items: contacts } = useSelector(selectContacts);
   const dispatch = useDispatch();
+  // console.log(contacts);
 
   const handleChangeContact = e => {
     const { name, value } = e.target;
